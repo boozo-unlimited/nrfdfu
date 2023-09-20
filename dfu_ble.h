@@ -24,6 +24,10 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "conf.h"
 
 int ble_enter_dfu(const char* interface, const char* address,
@@ -36,5 +40,9 @@ const uint8_t* ble_read(void);
 void ble_disconnect(void);
 void ble_wait_disconnect(int ms);
 void ble_fini(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

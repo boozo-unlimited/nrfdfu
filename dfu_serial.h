@@ -24,6 +24,10 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* SLIP buffer size should be bigger than MTU */
 #define BUF_SIZE	  1050
 #define SLIP_BUF_SIZE (BUF_SIZE * 2 + 1)
@@ -33,5 +37,9 @@ bool ser_encode_write(uint8_t* req, size_t len, int timeout_sec);
 const uint8_t* ser_read_decode(int timeout_sec);
 void ser_fini(void);
 void ser_reopen(int sleep_time);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

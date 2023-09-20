@@ -20,6 +20,10 @@
 #ifndef UTIL_H_
 #define UTIL_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef MAX
 #define MAX(_x, _y) ((_x) > (_y) ? (_x) : (_y))
 #endif
@@ -36,5 +40,9 @@
 
 void dump_data(const char* txt, const uint8_t* data, size_t len);
 bool hex_to_bin(const char* hex, uint8_t* bin, size_t len);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

@@ -19,6 +19,9 @@
 
 #ifdef __APPLE__
 #include "mac_endian.h"
+#elif _NEWLIB_VERSION
+#include <machine/endian.h>
+#define le16toh(_x) (_x)
 #else
 #include <endian.h>
 #endif

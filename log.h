@@ -22,6 +22,10 @@
 
 #include <stdbool.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* these conincide with syslog levels for convenience */
 enum loglevel { LL_CRIT = 2, LL_ERR, LL_WARN, LL_NOTICE, LL_INFO, LL_DEBUG };
 
@@ -52,5 +56,9 @@ log_out(enum loglevel ll, bool nl, const char* fmt, ...);
 #define LOG_NL(lvl)                                                            \
 	if (conf.loglevel == lvl)                                                  \
 		log_out(lvl, false, "\n");
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
