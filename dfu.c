@@ -20,8 +20,8 @@
 #ifdef __APPLE__
 #include "mac_endian.h"
 #elif _NEWLIB_VERSION
-#include <machine/endian.h>
-#define le16toh(_x) (_x)
+/* Bare-metal toolchain build with newlib */
+#include "arm_endian.h"
 #else
 #include <endian.h>
 #endif
