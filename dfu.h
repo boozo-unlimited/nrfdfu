@@ -23,6 +23,8 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <zip.h>
+#include "nrf_dfu_req_handler.h"
+#include "nrf_dfu_handling_error.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -34,6 +36,10 @@ bool dfu_ping(void);
 bool dfu_bootloader_enter(void);
 enum dfu_ret dfu_upgrade(zip_file_t* init_zip, size_t init_size,
 						 zip_file_t* fw_zip, size_t fw_size);
+
+size_t dfu_request_size(nrf_dfu_request_t* req);
+const char* dfu_err_str(nrf_dfu_result_t res);
+const char* dfu_ext_err_str(nrf_dfu_ext_error_code_t res);
 
 #ifdef __cplusplus
 }

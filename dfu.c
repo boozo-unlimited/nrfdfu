@@ -45,7 +45,7 @@ static uint16_t dfu_mtu;
 static uint32_t dfu_max_size;
 static uint32_t dfu_current_crc;
 
-static size_t request_size(nrf_dfu_request_t* req)
+size_t dfu_request_size(nrf_dfu_request_t* req)
 {
 	switch (req->request) {
 	case NRF_DFU_OP_OBJECT_CREATE:
@@ -76,7 +76,7 @@ static size_t request_size(nrf_dfu_request_t* req)
 
 static bool send_request(nrf_dfu_request_t* req)
 {
-	size_t size = request_size(req);
+	size_t size = dfu_request_size(req);
 	if (size == 0) {
 		LOG_ERR("Unknown size");
 		return false;
@@ -89,7 +89,7 @@ static bool send_request(nrf_dfu_request_t* req)
 	}
 }
 
-static const char* dfu_err_str(nrf_dfu_result_t res)
+const char* dfu_err_str(nrf_dfu_result_t res)
 {
 	switch (res) {
 	case NRF_DFU_RES_CODE_INVALID:
@@ -121,7 +121,7 @@ static const char* dfu_err_str(nrf_dfu_result_t res)
 	return "Unknown error";
 }
 
-static const char* dfu_ext_err_str(nrf_dfu_ext_error_code_t res)
+const char* dfu_ext_err_str(nrf_dfu_ext_error_code_t res)
 {
 	switch (res) {
 	case NRF_DFU_EXT_ERROR_NO_ERROR:
